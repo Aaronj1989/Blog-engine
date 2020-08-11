@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+
+<link rel="stylesheet" th:href="@{/styles/styles.css}" />
+<title>Blog engine</title>
+
+</head>
+<body>
+	<div th:replace="header :: header"></div>
+	<div class="bodycontainer">
+
+		<div class="maincontent">
+			<h1>The Tech INFORMER</h1>
+			<p>get the latest news!</p>
+
+			<div>
+
+				<table>
+					<tbody>
+						<tr th:each="article: ${articles}">
+							<td><h3>
+									<a th:href="@{/viewArticle(articleId=${article.id})}"
+										class="article-title" th:text="${article.title}"></a>
+								</h3></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

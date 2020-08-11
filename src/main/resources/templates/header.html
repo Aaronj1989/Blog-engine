@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+<link rel="stylesheet" th:href="@{/styles/styles.css}" />
+</head>
+<body>
+	<div class="headercontainer" th:fragment="header">
+
+		<form class="searchAndSubmit">
+			<input class="searchBar" type=search name="find" /> <input
+				type=submit value="search">
+		</form>
+
+		<nav>
+			<ul>
+				<li>
+				  <a href="/">Home</a>
+				</li>
+				<li>
+				  <a href="/cart">Cart</a>
+				</li>
+				
+				    <li sec:authorize="!isAuthenticated()">
+						<a href="/login">login</a>
+						<a href="/register">sign-up</a>
+					</li>	
+				
+                  <li sec:authorize="isAuthenticated()">
+						<a href="/userProfile"
+							th:text="${#authentication.name}"> 
+						</a> 
+						</li>
+					
+	            	
+					<li sec:authorize="isAuthenticated()">
+							<a href="/logout">log out</a>
+				    </li>
+					
+					<li sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="/createArticle">create post</a>
+					</li>
+			</ul>
+			
+					
+		</nav>
+
+	</div>
+
+</body>
+</html>
