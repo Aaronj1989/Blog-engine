@@ -31,8 +31,7 @@ public class User {
 
 	}
 
-	//had to set a user in the authorities because if not when saving user to database with cascade
-	//the child table has to have knowledge of the parent table. 
+	
 	public User(String username, String password, boolean isActive, Set<Authorities> roles) {
 		this.username = username;
 		this.password = password;
